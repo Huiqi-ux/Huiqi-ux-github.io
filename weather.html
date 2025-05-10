@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Modern+Antiqua&family=Monomakh&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Modern+Antiqua&family=Monomakh&family=Noto+Sans+TC:wght@100..900&display=swap"
+        rel="stylesheet">
+    <title>天氣</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #box {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background-image: url(./img/pexels-2.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat-x;
+            animation: moveClouds 25s linear infinite;
+        }
+
+        @keyframes moveClouds {
+            from {
+                transform: translateX(0%);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        h1 {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: "Modern Antiqua", serif;
+            color: black;
+            font-size: 2rem;
+            z-index: 10;
+        }
+
+        #weather-info {
+            width: 600px;
+            height: 450px;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-image: url(./img/sg.jpg);
+            opacity: 0.9;
+            padding: 10px 20px;
+        }
+
+        .btn {
+            color: blanchedalmond;
+            background-color: black;
+            font-family: "Modern Antiqua", serif;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            font-size: small;
+            min-width: 50px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 5px;
+            text-decoration: none;
+            font-family: "Noto Sans TC", serif;
+            color: black;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .taiwan-img {
+            width: 60px;
+            height: auto;
+            position: fixed;
+            bottom: 70px;
+            left: 7px;
+        }
+
+        #weather-cube {
+            width: 280px;
+            height: 180px;
+            border-radius: 5px;
+            background-color: black transparent;
+            opacity: 0.9;
+            position: fixed;
+            top: 50px;
+        }
+
+        p {
+            color: #f1f1f1;
+            font-family: "Noto Sans TC", serif;
+            font-size: xx-small;
+
+        }
+    </style>
+</head>
+
+<script src="./weather .js"></script>
+
+<body>
+
+    <div id="wrapper">
+        <h1>weatherforecast</h1>
+        <div id="box"></div>
+        <div id="weather-info">
+            <img src="./img/tw1.svg" alt="SVG Image" class="taiwan-img">
+            <div class="dropdown">
+                <button class="btn btn-e" onclick="toggleDropdown('dropdown-east')">EAST</button>
+                <div id="dropdown-east" class="dropdown-content">
+                    <a href="#">花蓮</a>
+                    <a href="#">台東</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="btn btn-w" onclick="toggleDropdown('dropdown-west')">WEST</button>
+                <div id="dropdown-west" class="dropdown-content">
+                    <a href="#">苗栗</a>
+                    <a href="#">臺中</a>
+                    <a href="#">彰化</a>
+                    <a href="#">南投</a>
+                    <a href="#">雲林</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="btn btn-s" onclick="toggleDropdown('dropdown-south')">SOUTH</button>
+                <div id="dropdown-south" class="dropdown-content">
+                    <a href="#">嘉義</a>
+                    <a href="#">臺南</a>
+                    <a href="#">高雄</a>
+                    <a href="#">屏東</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="btn btn-n" onclick="toggleDropdown('dropdown-north')">NORTH</button>
+                <div id="dropdown-north" class="dropdown-content">
+                    <a href="#">新竹</a>
+                    <a href="#">桃園</a>
+                    <a href="#">臺北</a>
+                    <a href="#">新北</a>
+                    <a href="#">基隆</a>
+                    <a href="#">宜蘭</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="btn btn-oi" onclick="toggleDropdown('dropdown-outer')">OUTER ISLANDS</button>
+                <div id="dropdown-outer" class="dropdown-content">
+                    <a href="#">澎湖</a>
+                    <a href="#">金門</a>
+                    <a href="#">馬祖</a>
+                </div>
+            </div>
+            <div id="weather-cube"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
